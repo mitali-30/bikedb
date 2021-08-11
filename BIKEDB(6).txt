@@ -1,0 +1,80 @@
+
+ASSIGNMENT 6:
+
+[I]
+use bikedb;
+show tables;
++------------------+
+| Tables_in_bikedb |
++------------------+
+| bike             |
+| company          |
+| country          |
++------------------+
+
+CREATE TABLE bike (ID int(20),NAME varchar(20), STATUS varchar(25),COMPANY int(11));
+INSERT INTO bike VALUES (1,'RC 125','ACTIVE',1),(2,'XPulse 200T','ACTIVE',2),(3,'Himalayan','ACTIVE',3);
+select*from bike;
++----+-------------+--------+---------+
+| ID | NAME        | STATUS | COMPANY |
++----+-------------+--------+---------+
+|  1 | RC 125      | ACTIVE |       1 |
+|  2 | XPulse 200T | ACTIVE |       2 |
+|  3 | Himalayan   | ACTIVE |       3 |
++----+-------------+--------+---------+
+3 rows in set (0.0095 sec)
+
+CREATE TABLE company (ID int(11), NAME varchar(256), FOUND int(111));
+INSERT INTO company VALUES (1,'KTM',1955),(2,'HERO',1984),(3,'Royal Enfield',1978);
+SELECT * FROM company;
++----+---------------+-------+
+| ID | NAME          | FOUND |
++----+---------------+-------+
+|  1 | KTM           |  1955 |
+|  2 | HERO          |  1984 |
+|  3 | Royal Enfield |  1978 |
++----+---------------+-------+
+3 rows in set (0.0053 sec)
+
+CREATE TABLE country (ID int(11),  coun_name varchar(111));
+INSERT INTO country VALUES (1,'Austria'), (2,'India'),(3,'India');
+select*from country;
++----+-----------+
+| ID | coun_name |
++----+-----------+
+|  1 | Austria   |
+|  2 | India     |
+|  3 | India     |
++----+-----------+
+3 rows in set (0.0007 sec)
+
+[II]
+SELECT bike.Id,bike.NAME,company.NAME,company.FOUND,country.coun_name from bike INNER JOIN company USING(Id) INNER JOIN country USING(Id) ORDER BY Id;
++----+-------------+---------------+-------+-----------+
+| Id | NAME        | NAME          | FOUND | coun_name |
++----+-------------+---------------+-------+-----------+
+|  1 | RC 125      | KTM           |  1955 | Austria   |
+|  2 | XPulse 200T | HERO          |  1984 | India     |
+|  3 | Himalayan   | Royal Enfield |  1978 | India     |
++----+-------------+---------------+-------+-----------+
+
+[III]
+SELECT bike.Id,bike.NAME,country.coun_name,bike.STATUS from bike INNER JOIN company USING(Id) INNER JOIN country USING(Id) ORDER BY Id;
++----+-------------+-----------+--------+
+| Id | NAME        | coun_name | STATUS |
++----+-------------+-----------+--------+
+|  1 | RC 125      | Austria   | ACTIVE |
+|  2 | XPulse 200T | India     | ACTIVE |
+|  3 | Himalayan   | India     | ACTIVE |
++----+-------------+-----------+--------+
+
+[IV]
+SELECT bike.Id,company.NAME,country.coun_name from bike INNER JOIN company USING(Id) INNER JOIN country USING(Id) ORDER BY Id;
++----+---------------+-----------+
+| Id | NAME          | coun_name |
++----+---------------+-----------+
+|  1 | KTM           | Austria   |
+|  2 | HERO          | India     |
+|  3 | Royal Enfield | India     |
++----+---------------+-----------+
+
