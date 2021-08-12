@@ -12,7 +12,7 @@ show tables;
 | country          |
 +------------------+
 
-CREATE TABLE bike (ID int(20) NOT NULL AUTO_INCREMENT,NAME varchar(200), STATUS varchar(25),COMPANY int(11), PRIMARY KEY (`ID`));
+CREATE TABLE bike (ID int(20) NOT NULL AUTO_INCREMENT,NAME varchar(200), STATUS varchar(25),COMPANY int(11), PRIMARY KEY (ID));
 INSERT INTO bike VALUES (1,'RC 125','ACTIVE',1),(2,'XPulse 200T','ACTIVE',2),(3,'Himalayan','ACTIVE',3);
 select*from bike;
 +----+-------------+--------+---------+
@@ -24,7 +24,7 @@ select*from bike;
 +----+-------------+--------+---------+
 3 rows in set (0.0095 sec)
 
-CREATE TABLE company (ID int(11) NOT NULL AUTO_INCREMENT, NAME varchar(256), FOUND int(111));
+CREATE TABLE company (ID int(11) NOT NULL AUTO_INCREMENT, NAME varchar(256), FOUND int(111),PRIMARY KEY (ID);
 INSERT INTO company VALUES (1,'KTM',1955),(2,'HERO',1984),(3,'Royal Enfield',1978);
 SELECT * FROM company;
 +----+---------------+-------+
@@ -36,7 +36,7 @@ SELECT * FROM company;
 +----+---------------+-------+
 3 rows in set (0.0053 sec)
 
-CREATE TABLE country (ID int(11) NOT NULL AUTO_INCREMENT, coun_name varchar(111));
+CREATE TABLE country (ID int(11) NOT NULL AUTO_INCREMENT, coun_name varchar(111),PRIMARY KEY (ID);
 INSERT INTO country VALUES (1,'Austria'), (2,'India'),(3,'India');
 select*from country;
 +----+-----------+
